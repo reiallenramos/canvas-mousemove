@@ -2,7 +2,7 @@
   <div id="app">
     <span>{{x}}, {{y}}</span>
     <h1>Drawing with mousemove event</h1>
-    <canvas id="myCanvas" width="560" height="360" @mousemove="draw"/>
+    <canvas id="myCanvas" width="560" height="360" @mousemove="draw" @mousedown="beginDrawing" @mouseup="stopDrawing" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       canvas: null,
+      isDrawing: false,
       x: 0,
       y: 0,
     }
@@ -37,9 +38,24 @@ export default {
       ctx.closePath();
     },
     draw(e) {
-      this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
+      if(this.isDrawing) {
+        this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
+        this.x = e.offsetX;
+        this.y = e.offsetY;
+      }
+    },
+    beginDrawing(e) {
       this.x = e.offsetX;
       this.y = e.offsetY;
+      this.isDrawing = true;
+    },
+    stopDrawing(e) {
+      if (this.isDrawing) {
+        this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
+        this.x = 0;
+        this.y = 0;
+        this.isDrawing = false;
+      }
     }
   },
   mounted() {
