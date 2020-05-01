@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <span>{{x}}, {{y}}</span>
     <h1>Drawing with mousemove event</h1>
-    <canvas id="myCanvas" width="560" height="360" />
+    <canvas id="myCanvas" width="560" height="360" @mousemove="showCoordinates"/>
   </div>
 </template>
 
@@ -15,7 +16,15 @@
 export default {
   data() {
     return {
-      canvas: null
+      canvas: null,
+      x: 0,
+      y: 0,
+    }
+  },
+  methods: {
+    showCoordinates(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
     }
   },
   mounted() {
