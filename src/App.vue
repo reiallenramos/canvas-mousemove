@@ -11,6 +11,20 @@
 }
 </style>
 
+<script>
+export default {
+  data() {
+    return {
+      canvas: null
+    }
+  },
+  mounted() {
+    var c = document.getElementById("myCanvas");
+    this.canvas = c.getContext('2d');
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
