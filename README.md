@@ -1,24 +1,7 @@
 # canvas-mousemove
 
-## Project setup
-```
-npm install
-```
+files for [Drawing in Vue using mousemove event](https://dev.to/reiallenramos/drawing-in-vue-using-mousemove-event-34cg)
 
-### Compiles and hot-reloads for development
-```
+## Start
+
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
