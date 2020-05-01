@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <span>{{x}}, {{y}}</span>
     <h1>Drawing with mousemove event</h1>
     <canvas id="myCanvas" width="560" height="360" @mousemove="draw" @mousedown="beginDrawing" @mouseup="stopDrawing" />
   </div>
