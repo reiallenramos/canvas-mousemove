@@ -2,7 +2,7 @@
   <div id="app">
     <span>{{x}}, {{y}}</span>
     <h1>Drawing with mousemove event</h1>
-    <canvas id="myCanvas" width="560" height="360" @mousemove="showCoordinates"/>
+    <canvas id="myCanvas" width="560" height="360" @mousemove="draw"/>
   </div>
 </template>
 
@@ -23,6 +23,21 @@ export default {
   },
   methods: {
     showCoordinates(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
+    },
+    drawLine(x1, y1, x2, y2) {
+      let ctx = this.canvas;
+      ctx.beginPath();
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 1;
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+      ctx.closePath();
+    },
+    draw(e) {
+      this.drawLine(this.x, this.y, e.offsetX, e.offsetY);
       this.x = e.offsetX;
       this.y = e.offsetY;
     }
